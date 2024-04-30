@@ -1,11 +1,13 @@
+import os
 import discord
+from random import randint
+import random
 from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix='/', intents=intents)
-
 
 
 
@@ -28,6 +30,14 @@ tariflistesi = {
     "Bayat Ekmek Sandviçleri": {"sira_no": 16, "malzemeler": ["bayat ekmek dilimleri", "dilimlenmiş et", "peynir", "marul", "domates", "mayonez"]},
     "Bayat Ekmek Tostu": {"sira_no": 17, "malzemeler": ["bayat ekmek dilimleri", "kaşar peyniri", "sucuk", "domates", "biber"]}
 }
+@bot.command()
+async def bilgi(ctx):
+    await ctx.send("Tarif listesi için- /tarifler\nTarifin detayları için- /tarif (tarif_adı)")
+
+@bot.command()
+async def hakkında(ctx):
+    await ctx.send("Bu botun amacı size bayat ekmeği doğru kullanmayı öğretmektir.")
+
 
 @bot.command()
 async def tarifler(ctx):
